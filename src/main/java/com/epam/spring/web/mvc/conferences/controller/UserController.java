@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/users")
@@ -43,6 +45,21 @@ public class UserController {
         log.info("Deleting user with email{}", email);
         userService.deleteUser(email);
         return  ResponseEntity.noContent().build();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/count")
+    public int calculateUsersNumber() {
+        log.info("Calculating users number{}", userService.calculateUsersNumber());
+        return userService.calculateUsersNumber();
+    }
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/getByRole/{email}")
+    public List<UserDto> getUsersByRoleId(@PathVariable int role_id) {
+        log.info("Getting users by role_id {}", role_id);
+        return userService.getUsersByRoleId(role_id);
     }
 
 }

@@ -2,11 +2,13 @@ package com.epam.spring.web.mvc.conferences.persistence.dao.impl;
 
 import com.epam.spring.web.mvc.conferences.persistence.dao.ReportRepository;
 import com.epam.spring.web.mvc.conferences.persistence.model.Reports;
+import com.epam.spring.web.mvc.conferences.persistence.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -44,4 +46,17 @@ public class ReportRepositoryImpl implements ReportRepository {
         list.removeIf(reports -> reports.getEvent_id()==id);
         log.info("Report with id {} was deleted", id);
     }
+
+    @Override
+    public int calculateReportsNumber() {
+        log.info("Reports number{}", list.size());
+        return list.size();
+    }
+
+    @Override
+    public List<Reports> getReportByEventId(int event_id) {
+        log.info("Got Reports by event_id: " + event_id);
+        return list.stream().filter(reports -> reports.getEvent_id()==event_id).collect(Collectors.toList());
+    }
+
 }

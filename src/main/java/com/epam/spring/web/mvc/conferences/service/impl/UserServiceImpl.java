@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -41,6 +44,20 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(String email) {
         userRepository.deleteUser(email);
         log.info("UserService: delete user with email {}", email);
+    }
+
+    @Override
+    public int calculateUsersNumber() {
+        log.info("UserService: users count{}", userRepository.calculateUsersNumber());
+        return userRepository.calculateUsersNumber();
+    }
+
+    @Override
+    public List<UserDto> getUsersByRoleId(int role_id) {
+        log.info("Got Users by role_id: " + role_id);
+        List<User> userList = userRepository.getUsersByRoleId(role_id);
+        List<UserDto> userDtoList = userList.stream().map(u -> mapUserToUserDto(u)).collect(Collectors.toList());
+        return userDtoList;
     }
 
 

@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/events")
@@ -43,5 +45,27 @@ public class EventController {
         log.info("Deleting event with id{}", id);
         eventService.deleteEvent(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/count")
+    public int calculateEventsNumber() {
+        log.info("Calculating events number{}", eventService.calculateEventsNumber());
+        return eventService.calculateEventsNumber();
+    }
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/placeUA/{event_place_ua}")
+    public List<EventsDTO> getEventByPlaceUA(@PathVariable String event_place_ua) {
+        log.info("Getting Events by event_place_ua {}", event_place_ua);
+        return eventService.getEventByPlaceUA(event_place_ua);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/placeEN/{event_place_en}")
+    public List<EventsDTO> getEventByPlaceEN(@PathVariable String event_place_en) {
+        log.info("Getting Events by event_place_en {}", event_place_en);
+        return eventService.getEventByPlaceEN(event_place_en);
     }
 }

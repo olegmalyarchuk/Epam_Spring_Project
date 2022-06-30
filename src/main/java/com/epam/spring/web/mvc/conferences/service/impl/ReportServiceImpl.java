@@ -1,12 +1,17 @@
 package com.epam.spring.web.mvc.conferences.service.impl;
 
 import com.epam.spring.web.mvc.conferences.dto.ReportsDTO;
+import com.epam.spring.web.mvc.conferences.dto.UserDto;
 import com.epam.spring.web.mvc.conferences.persistence.dao.ReportRepository;
 import com.epam.spring.web.mvc.conferences.persistence.model.Reports;
+import com.epam.spring.web.mvc.conferences.persistence.model.User;
 import com.epam.spring.web.mvc.conferences.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -40,6 +45,20 @@ public class ReportServiceImpl implements ReportService {
     public void deleteReport(int id) {
         reportRepository.deleteReport(id);
         log.info("ReportService: delete report with id {}", id);
+    }
+
+    @Override
+    public int calculateReportsNumber() {
+        log.info("ReportService: reports count{}", reportRepository.calculateReportsNumber());
+        return reportRepository.calculateReportsNumber();
+    }
+
+    @Override
+    public List<ReportsDTO> getReportByEventId(int event_id) {
+        log.info("Got Reports by event_id: " + event_id);
+        List<Reports> reportsList = reportRepository.getReportByEventId(event_id);
+        List<ReportsDTO> reportsDTOList = reportsList.stream().map(u -> mapReportToReportDTO(u)).collect(Collectors.toList());
+        return reportsDTOList;
     }
 
     private Reports mapReportDtoToReport(ReportsDTO reportsDTO) {

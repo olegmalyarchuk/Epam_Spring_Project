@@ -1,6 +1,7 @@
 package com.epam.spring.web.mvc.conferences.controller;
 
 import com.epam.spring.web.mvc.conferences.dto.ReportsDTO;
+import com.epam.spring.web.mvc.conferences.dto.UserDto;
 import com.epam.spring.web.mvc.conferences.service.ReportService;
 import com.epam.spring.web.mvc.conferences.validation.AdvancedInfo;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -43,5 +46,21 @@ public class ReportController {
         log.info("Deleting report with id{}", id);
         reportService.deleteReport(id);
         return ResponseEntity.noContent().build();
+    }
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/count")
+    public int calculateReportsNumber() {
+        log.info("Calculating reports number{}", reportService.calculateReportsNumber());
+        return reportService.calculateReportsNumber();
+    }
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/getByEventId/{event_id}")
+    public List<ReportsDTO> getReportByEventId(@PathVariable int event_id) {
+        log.info("Getting reports by event_id {}", event_id);
+        return reportService.getReportByEventId(event_id);
     }
 }

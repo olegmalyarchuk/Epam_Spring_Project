@@ -1,12 +1,17 @@
 package com.epam.spring.web.mvc.conferences.service.impl;
 
 import com.epam.spring.web.mvc.conferences.dto.EventsDTO;
+import com.epam.spring.web.mvc.conferences.dto.UserDto;
 import com.epam.spring.web.mvc.conferences.persistence.dao.EventRepository;
 import com.epam.spring.web.mvc.conferences.persistence.model.Events;
+import com.epam.spring.web.mvc.conferences.persistence.model.User;
 import com.epam.spring.web.mvc.conferences.service.EventService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -41,6 +46,28 @@ public class EventServiceImpl implements EventService {
     public void deleteEvent(int id) {
         eventRepository.deleteEvent(id);
         log.info("EventService: delete event with id {}", id);
+    }
+
+    @Override
+    public int calculateEventsNumber() {
+        log.info("EventService: events count{}", eventRepository.calculateEventsNumber());
+        return eventRepository.calculateEventsNumber();
+    }
+
+    @Override
+    public List<EventsDTO> getEventByPlaceUA(String event_place_ua) {
+        log.info("Got Events by place_ua: " + event_place_ua);
+        List<Events> eventsList = eventRepository.getEventByPlaceUA(event_place_ua);
+        List<EventsDTO> eventsDTOList = eventsList.stream().map(e -> mapEventToEventDto(e)).collect(Collectors.toList());
+        return eventsDTOList;
+    }
+
+    @Override
+    public List<EventsDTO> getEventByPlaceEN(String event_place_en) {
+        log.info("Got Events by place_en: " + event_place_en);
+        List<Events> eventsList = eventRepository.getEventByPlaceUA(event_place_en);
+        List<EventsDTO> eventsDTOList = eventsList.stream().map(e -> mapEventToEventDto(e)).collect(Collectors.toList());
+        return eventsDTOList;
     }
 
     private Events mapEventDtoToEvent(EventsDTO eventsDTO) {
