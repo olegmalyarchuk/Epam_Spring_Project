@@ -1,4 +1,4 @@
-package com.epam.spring.web.mvc.rentcarservice.dto;
+package com.epam.spring.web.mvc.conferences.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

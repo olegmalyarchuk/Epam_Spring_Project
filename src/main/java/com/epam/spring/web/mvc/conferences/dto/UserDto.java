@@ -1,12 +1,11 @@
-package com.epam.spring.web.mvc.rentcarservice.dto;
+package com.epam.spring.web.mvc.conferences.dto;
 
-import com.epam.spring.web.mvc.rentcarservice.persistence.model.User_roles;
-import com.epam.spring.web.mvc.rentcarservice.validation.AdvancedInfo;
-import com.epam.spring.web.mvc.rentcarservice.validation.BasicInfo;
+import com.epam.spring.web.mvc.conferences.persistence.model.User_roles;
+import com.epam.spring.web.mvc.conferences.validation.AdvancedInfo;
+import com.epam.spring.web.mvc.conferences.validation.BasicInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
 

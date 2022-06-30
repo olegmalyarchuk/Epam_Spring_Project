@@ -1,6 +1,5 @@
-package com.epam.spring.web.mvc.rentcarservice.persistence.model;
+package com.epam.spring.web.mvc.conferences.persistence.model;
 
-import com.epam.spring.web.mvc.rentcarservice.dto.CarDto;
 import lombok.Builder;
 import lombok.Data;
 

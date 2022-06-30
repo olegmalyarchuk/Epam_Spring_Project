@@ -1,7 +1,7 @@
-package com.epam.spring.web.mvc.rentcarservice.dto;
+package com.epam.spring.web.mvc.conferences.dto;
 
-import com.epam.spring.web.mvc.rentcarservice.persistence.model.Reports;
-import com.epam.spring.web.mvc.rentcarservice.validation.AdvancedInfo;
+import com.epam.spring.web.mvc.conferences.persistence.model.Reports;
+import com.epam.spring.web.mvc.conferences.validation.AdvancedInfo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
