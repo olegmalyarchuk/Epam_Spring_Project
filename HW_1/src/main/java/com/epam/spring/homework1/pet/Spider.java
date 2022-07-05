@@ -1,9 +1,10 @@
 package com.epam.spring.homework1.pet;
 
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(4)
-public class Spider implements Animal{
+@Order(Ordered.LOWEST_PRECEDENCE)
+public class Spider implements Animal {
 }

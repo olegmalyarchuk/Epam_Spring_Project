@@ -4,6 +4,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(2)
-public class Cat implements Animal{
+@Order(1)
+public class Cat implements Animal {
 }

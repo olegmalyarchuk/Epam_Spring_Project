@@ -4,7 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BeanB {
-    BeanB() {
-        System.out.println(this.getClass().getSimpleName());
-    }
+
+	public BeanB() {
+		System.out.println(this.getClass().getSimpleName());
+	}
+
 }
