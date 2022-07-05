@@ -7,11 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class BeanA extends OurBean implements InitializingBean, DisposableBean {
 
-
     public BeanA() {
         super();
     }
-
+    
     public BeanA(String name, int value) {
         super(name, value);
     }

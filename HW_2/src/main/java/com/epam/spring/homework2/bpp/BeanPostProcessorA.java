@@ -12,8 +12,8 @@ public class BeanPostProcessorA implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         boolean isOurBean = bean instanceof OurBean;
-        if(isOurBean) {
-            if(((OurBean) bean).getName()==null|| ((OurBean) bean).getValue() < 0) {
+        if (isOurBean) {
+            if (((OurBean) bean).getName() == null || ((OurBean) bean).getValue() < 0) {
                 System.out.println("Bean isn't valid");
             }
         }

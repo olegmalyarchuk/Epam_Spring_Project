@@ -4,16 +4,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanD extends OurBean{
-
-    public void doInit() {
-        System.out.println("Initiating BeanD");
-    }
-
-    public void doDestroy() {
-        System.out.println("Destroying Bean D");
-    }
-
+public class BeanD extends OurBean {
 
     public BeanD() {
     }
@@ -21,6 +12,14 @@ public class BeanD extends OurBean{
     public BeanD(String name, int value) {
         super(name, value);
 
+    }
+
+    public void doInit() {
+        System.out.println("Initiating BeanD");
+    }
+
+    public void doDestroy() {
+        System.out.println("Destroying Bean D");
     }
 
 }

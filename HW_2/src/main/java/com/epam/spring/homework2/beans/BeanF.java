@@ -12,7 +12,7 @@ public class BeanF extends OurBean {
     }
 
     public BeanF(String name, int value) {
-       super(name, value);
+        super(name, value);
     }
 
 }

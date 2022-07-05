@@ -19,11 +19,13 @@ public class ConfigB {
     public BeanB beanB() {
         return new BeanB(environment.getProperty("beanB.name"), Integer.valueOf(environment.getProperty("beanB.value")));
     }
+
     @Bean(initMethod = "doInit", destroyMethod = "doDestroy")
     @DependsOn("beanD")
     public BeanC beanC() {
         return new BeanC(environment.getProperty("beanC.name"), Integer.valueOf(environment.getProperty("beanC.value")));
     }
+
     @Bean(initMethod = "doInit", destroyMethod = "doDestroy")
     public BeanD beanD() {
         return new BeanD(environment.getProperty("beanD.name"), Integer.valueOf(environment.getProperty("beanD.value")));
