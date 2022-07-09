@@ -1,4 +1,4 @@
-package com.epam.spring.web.mvc.conferences;
+package com.epam.spring.web.mvc.conferences.controller;
 
 import com.epam.spring.web.mvc.conferences.exception.ServiceException;
 import com.epam.spring.web.mvc.conferences.persistence.model.Error;
