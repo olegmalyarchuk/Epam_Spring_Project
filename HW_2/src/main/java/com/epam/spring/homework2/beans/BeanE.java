@@ -7,7 +7,6 @@ import javax.annotation.PreDestroy;
 
 @Component
 public class BeanE extends BaseBean {
-	private String beanName;
 
 	public BeanE() {
 		System.out.println("Bean E constructor");
