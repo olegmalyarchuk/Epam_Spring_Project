@@ -8,8 +8,7 @@ public class BaseBean implements BeanNameAware {
 
 	private String beanName;
 
-	public BaseBean() {
-	}
+	public BaseBean() {}
 
 	public BaseBean(String name, int value) {
 		this.name = name;
