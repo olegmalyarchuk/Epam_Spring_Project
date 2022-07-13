@@ -5,7 +5,6 @@ import org.springframework.beans.factory.BeanNameAware;
 public class BaseBean implements BeanNameAware {
 	private String name;
 	private int value;
-
 	private String beanName;
 
 	public BaseBean() {}
